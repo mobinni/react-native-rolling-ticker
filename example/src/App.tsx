@@ -1,23 +1,35 @@
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, FlatList } from 'react-native';
 import { RollingTickerView } from 'react-native-rolling-ticker';
+import React, { useEffect, useRef, useState } from 'react';
 
-export default function App() {
+const App = () => {
+  const [value, setValue] = useState(0); // Array of 10,000 values
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setValue(val => val+=1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
   return (
     <View style={styles.container}>
-      <RollingTickerView color="#32a852" style={styles.box} />
+      <RollingTickerView color="#32a852" value={String(value)} style={styles.box}/>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: 50,
   },
   box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
+    width: 200,
+    height: 50,
+    marginBottom: 10,
   },
 });
+
+export default App;

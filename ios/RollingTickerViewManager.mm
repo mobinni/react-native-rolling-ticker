@@ -1,6 +1,5 @@
+#import "RollingTickerView.h"
 #import <React/RCTViewManager.h>
-#import <React/RCTUIManager.h>
-#import "RCTBridge.h"
 
 @interface RollingTickerViewManager : RCTViewManager
 @end
@@ -15,5 +14,6 @@ RCT_EXPORT_MODULE(RollingTickerView)
 }
 
 RCT_EXPORT_VIEW_PROPERTY(color, NSString)
+RCT_EXPORT_VIEW_PROPERTY(value, NSString)
 
 @end
